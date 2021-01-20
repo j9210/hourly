@@ -1,9 +1,17 @@
-const router = require('express').Router();
-
-const projectRoutes = require('./project-routes.js');
-const hourRoutes = require('./hours-routes');
-
-router.use('/projects', projectRoutes);
-router.use('/hours', hoursRoutes);
-
-module.exports = router;
+router.post('/', (req, res) => {
+    // check the session
+    if (req.session) {
+      Project.create({
+        project_name: req.body.project_name,
+        starting_date: req.body.starting_date,
+        end_date: req.body.end_date,
+        // use the id from the session
+        user_id: req.session.user_id
+      })
+        .then(dbprojectData => res.json(dbprojectData))
+        .catch(err => {
+          console.log(err);
+          res.status(400).json(err);
+        });
+    }
+  });
