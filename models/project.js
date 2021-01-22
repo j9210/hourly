@@ -5,6 +5,7 @@ class Project extends Model {}
 
 Project.init(
     {
+        //columns
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
