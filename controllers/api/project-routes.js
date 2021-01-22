@@ -1,3 +1,6 @@
+const router = require('express').Router();
+const { Project } = require('../../models');
+
 //get all projects
 router.get('/', (req, res) => {
   Project.findAll({
