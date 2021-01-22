@@ -19,5 +19,20 @@ router.post('/', (req, res) => {
 //update
 
 //delete
+router.delete('/', (req, res) => {
+    // check the session
+    if (req.session) {
+      Hours.destroy({
+        hours_billable: req.body.hours_billable,
+        nonbillable_hours: req.body.nonbillable_hours,
+        // use the id from the session
+        user_id: req.session.user_id
+      })
+        .then(dbhoursData => res.json(dbhoursData))
+        .catch(err => {
+          console.log(err);
+          res.status(400).json(err);
+        });
+    }
+  });
 
-//get one 
