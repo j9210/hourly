@@ -1,3 +1,23 @@
+//get all projects
+router.get('/', (req, res) => {
+  Project.findAll({
+  
+  })
+    .then(dbProjectData => res.json(dbProjectData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
+
+
+
+
+
+//create 
+
 router.post('/', (req, res) => {
     // check the session
     if (req.session) {
@@ -15,3 +35,18 @@ router.post('/', (req, res) => {
         });
     }
   });
+
+  //update name, start and end date
+  router.put('/:id', (req, res) => {
+    //expects { project_name: coding homework, Starting_date: , end_date: }
+
+    //pass in req.body instead to update whats passed through
+    }
+  })
+
+
+
+
+
+  //delete
+
