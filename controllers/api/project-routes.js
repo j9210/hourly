@@ -41,9 +41,9 @@ router.post('/', (req, res) => {
      //check the session
     if (req.session) {
       Project.create({
-        project_name: req.body.project_name,
-        starting_date: req.body.starting_date,
-        end_date: req.body.end_date,
+        title: req.body.title,
+        date_started: req.body.date_started,
+        date_ended: req.body.date_ended,
         //use the id from the session
         user_id: req.session.user_id
       })
