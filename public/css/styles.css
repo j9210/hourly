@@ -144,3 +144,37 @@ main {
 #sign-up:hover {
     background-color: #FFC71F;
 }
+    /* Footer */
+footer {
+    grid-row: 3 / 4;
+    grid-column: 1 / 4;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+}
+#footer-logo {
+    background-color: white;
+}
+footer ul {
+    list-style: none;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.creators {
+    margin: 10px;
+    padding: 5px 15px;
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    background-color: black;
+}
+.creators:hover {
+    background-color: rgb(245, 242, 72);
+    color: black;
+}
+footer ul li a {
+    text-decoration: none;
+    color: white;
+}
