@@ -12,17 +12,9 @@ Hours.init(
             autoIncrement: true
         },
         user_id: {
-            type: DataTypes.INTEGER,
+            type:DataTypes.STRING,
             allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        },
-        total_hours: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
+            reference: {
                 model: 'user',
                 key: 'id'
             }
@@ -30,20 +22,11 @@ Hours.init(
         billable_hours: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id"'
-            }
         },
         unbillable_hours: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
+            allowNull: false
         }
-
     },
     {
        sequelize,
