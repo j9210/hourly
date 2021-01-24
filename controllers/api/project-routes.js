@@ -37,23 +37,23 @@ router.get('/', (req, res) => {
 
 // POST /api/projects
 
-//router.post('/', (req, res) => {
+router.post('/', (req, res) => {
      //check the session
-  //   if (req.session) {
-  //     Project.create({
-  //       title: req.body.title,
-  //       date_started: req.body.date_started,
-  //       date_ended: req.body.date_ended,
-  //       //use the id from the session
-  //       user_id: req.session.user_id
-  //     })
-  //       .then(dbprojectData => res.json(dbprojectData))
-  //       .catch(err => {
-  //         console.log(err);
-  //         res.status(400).json(err);
-  //       });
-  //   }
-  // });
+    if (req.session) {
+      Project.create({
+        title: req.body.title,
+        date_started: req.body.date_started,
+        date_ended: req.body.date_ended,
+        //use the id from the session
+        user_id: req.session.user_id
+      })
+        .then(dbprojectData => res.json(dbprojectData))
+        .catch(err => {
+          console.log(err);
+          res.status(400).json(err);
+        });
+    }
+  });
 
   // //update name, start and end date
   // router.put('/:id', (req, res) => {
