@@ -62,7 +62,6 @@ main {
 .home-color-bg {
     height: 100%;
 }
-
     /* Home-Page elements */
 .home-info-handler {
     grid-row: 2 / 3;
@@ -71,7 +70,7 @@ main {
     justify-content: space-evenly;
     align-items: center;
 }
-    /* Brand Statement */
+    /* HOMEPAGE Brand Statement */
 .intro-info {
     position: relative;
     top: 50px;
@@ -146,6 +145,110 @@ main {
 #sign-up:hover {
     background-color: #FFC71F;
 }
+
+    /* SIGN IN */
+.sign-in-form-handler {
+    background: rgba( 255, 255, 255, 0.20 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20.0px );
+    -webkit-backdrop-filter: blur( 20.0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.sign-in-form-handler h3 {
+    margin-bottom: 15px;
+    padding: 15px 0 5px 0;
+}
+.sign-in-form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+.sign-in-form input {
+    padding: 8px;
+    margin: 10px;
+    min-width: 250px;
+}
+#log-in {
+    position: relative;
+    top: 15px;
+    padding: 8px 20px;
+    border: 2px solid rgba(255, 255, 255, 0);
+    border-radius: 15px;
+}
+
+    /* CREATE A PROJECT LINK */
+.create-project-handler {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: fit-content;
+    padding: 15px;
+    margin: 15px 0 25px 0;
+    width: 50%;
+    background: rgba( 255, 255, 255, 0.20 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 134, 0.2 );
+    backdrop-filter: blur( 20.0px );
+    -webkit-backdrop-filter: blur( 20.0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    max-height: 100px;
+}
+.create-project-link {
+    text-align: center;
+}
+.create-project-link {
+    position: relative;
+    top: 10px;
+}
+
+    /* Project Styles */
+.project {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 25px 10px;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 134, 0.2 );
+    backdrop-filter: blur( 20.0px );
+    -webkit-backdrop-filter: blur( 20.0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.project h2 {
+    letter-spacing: 1px;
+}
+.project h5 {
+    padding: 5px;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: fit-content;
+}
+.project h5:hover {
+    background-color: white;
+    border: 1px solid white;
+}
+.project h5 a {
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+.project h5 a:hover {
+    color: black;
+}
+.project-dates {
+    display: flex;
+    justify-content: flex-end;
+}
+.project-dates p {
+    margin: 5px;
+}
+
+
     /* Footer */
 footer {
     grid-row: 3 / 4;
