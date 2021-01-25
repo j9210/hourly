@@ -14,24 +14,24 @@ router.get('/', (req, res) => {
 });
 
 // GET /api/projects/1
-// router.get('/:id', (req, res) => {
-//   Project.findOne({
-//     where: {
-//       id: req.params.id
-//     }
-//   })
-//     .then(dbUserData => {
-//       if (!dbUserData) {
-//         res.status(404).json({ message: 'No project found with this id' });
-//         return;
-//       }
-//       res.json(dbUserData);
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
+router.get('/:id', (req, res) => {
+  Project.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbUserData => {
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No project found with this id' });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 
 
@@ -56,32 +56,49 @@ router.post('/', (req, res) => {
   });
 
   // //update name, start and end date
-  // router.put('/:id', (req, res) => {
-  //   //expects { project_name: coding homework, Starting_date: , end_date: }
-
-  //   //pass in req.body instead to update whats passed through
-  //   }
-  // })
+router.put('/:id', (req, res) => {
+  Project.update(
+    {
+      title: req.body.title
+    },
+    {
+      where: {
+        id: req.params.id 
+      }
+    }
+  )
+  .then(dbProjectData => {
+    if(!dbProjectData) {
+      res.status(404).json({ message: 'No project found with this id'});
+      return;
+    }
+    res.json(dbProjectData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
 
   // DELETE /api/projects/1
-// router.delete('/:id', (req, res) => {
-//   Project.destroy({
-//     where: {
-//       id: req.params.id
-//     }
-//   })
-//     .then(dbUserData => {
-//       if (!dbUserData) {
-//         res.status(404).json({ message: 'No project found with this id' });
-//         return;
-//       }
-//       res.json(dbUserData);
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
+router.delete('/:id', (req, res) => {
+  Project.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbUserData => {
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No project found with this id' });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 
 

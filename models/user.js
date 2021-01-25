@@ -20,7 +20,7 @@ User.init(
         },
         hours_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             references: {
                 model: 'hours',
                 key: 'id'
@@ -35,7 +35,7 @@ User.init(
             type: DataTypes.STRING,
             allowNull:false,
             validate: {
-                lens: [6]
+                len: [6]
             }
         }
     },
