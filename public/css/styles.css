@@ -249,6 +249,46 @@ main {
 }
 
 
+    /* Create Project CSS */
+.create-post-handler {
+    background-color: white;
+    border-radius: 12px;
+    text-align: center;
+    width: max-content;
+    padding: 15px;
+}
+.create-post-handler h1 {
+    margin-bottom: 5px;
+}
+.date-handler {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.date-handler label {
+    margin-right: 10px;
+    font-family: 'cabin';
+}
+.date-handler input {
+    margin-right: 10px;
+    font-family: 'cabin';
+    border: 1px solid rgb(177, 177, 177)
+}
+.date-handler input:focus {
+    outline: none;
+    border-color: #acacac;
+    box-shadow: 5px 5px 10px #c2c2c2;
+}
+.create-post-btn-handler {
+    margin: 15px 0 5px 0;
+}
+#create-project-btn {
+    padding: 8px 15px;
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    background-color: #83e377;
+}
+
     /* Footer */
 footer {
     grid-row: 3 / 4;
