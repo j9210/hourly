@@ -8,11 +8,15 @@
     </div>
 </section>
     <!-- Individual Projects -->
+{{#if project.length}}
+{{#each project as |project|}}
 <section class="project">
-    <h2>Title</h2>
+    <h2>{{project.title}}</h2>
     <div class="project-dates">
-        <p>Date Started: <span>1/10/21</span></p>
-        <p>Date Ended: <span>2/21/21</span></p>
+        <p>Date Started: <span>{{project.date_started}}</span></p>
+        <p>Date Ended: <span>{{project.date_ended}}</span></p>
     </div>
     <h5><a href="/hours">Edit Hours</a></h5>
 </section>
+{{/each}}
+{{#if}}
