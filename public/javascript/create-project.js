@@ -7,7 +7,7 @@ async function createPostHandler(event) {
 
     if (title && startDate && endDate) {
         const response = await fetch ('/api/projects', {
-            method: 'create',
+            method: 'post',
             body: JSON.stringify({
                 title,
                 date_started,
