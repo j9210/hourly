@@ -35,7 +35,7 @@ Project.init(
             allowNull: false,
             validate: {
                 notNull: {
-                    msg: 'Pease enter project end date'
+                    msg: 'Please enter project end date'
                 }
             }
         }
