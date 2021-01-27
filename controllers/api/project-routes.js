@@ -1,4 +1,7 @@
-//get all projects
+const router = require('express').Router();
+const { Project } = require('../../models');
+
+// //get all projects
 router.get('/', (req, res) => {
   Project.findAll({
   
@@ -35,13 +38,13 @@ router.get('/:id', (req, res) => {
 // POST /api/projects
 
 router.post('/', (req, res) => {
-    // check the session
+     //check the session
     if (req.session) {
       Project.create({
-        project_name: req.body.project_name,
-        starting_date: req.body.starting_date,
-        end_date: req.body.end_date,
-        // use the id from the session
+        title: req.body.title,
+        date_started: req.body.date_started,
+        date_ended: req.body.date_ended,
+        //use the id from the session
         user_id: req.session.user_id
       })
         .then(dbprojectData => res.json(dbprojectData))
@@ -53,12 +56,29 @@ router.post('/', (req, res) => {
   });
 
   // //update name, start and end date
-  // router.put('/:id', (req, res) => {
-  //   //expects { project_name: coding homework, Starting_date: , end_date: }
-
-  //   //pass in req.body instead to update whats passed through
-  //   }
-  // })
+router.put('/:id', (req, res) => {
+  Project.update(
+    {
+      title: req.body.title
+    },
+    {
+      where: {
+        id: req.params.id 
+      }
+    }
+  )
+  .then(dbProjectData => {
+    if(!dbProjectData) {
+      res.status(404).json({ message: 'No project found with this id'});
+      return;
+    }
+    res.json(dbProjectData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
 
   // DELETE /api/projects/1
 router.delete('/:id', (req, res) => {

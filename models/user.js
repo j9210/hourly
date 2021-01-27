@@ -18,6 +18,14 @@ User.init(
             primaryKey: true,
             autoIncrement: true
         },
+        hours_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: 'hours',
+                key: 'id'
+            }
+        },
         username: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -27,7 +35,7 @@ User.init(
             type: DataTypes.STRING,
             allowNull:false,
             validate: {
-                lens: [6]
+                len: [6]
             }
         }
     },
