@@ -167,12 +167,11 @@ main {
     -webkit-backdrop-filter: blur( 20.0px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
+    text-align: center;
 }
-.sign-in-form-handler h3 {
+.sign-in-form-handler h2 {
     margin-bottom: 15px;
     padding: 15px 0 5px 0;
-    position: relative;
-    left: 35px;
 }
 .sign-in-form {
     display: flex;
@@ -192,6 +191,9 @@ main {
     padding: 8px 20px;
     border: 2px solid rgba(255, 255, 255, 0);
     border-radius: 15px;
+}
+#log-in:hover {
+    background-color: #70e000; 
 }
 
     /* CREATE A PROJECT LINK */
