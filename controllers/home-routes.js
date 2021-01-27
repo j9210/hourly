@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { hours, User, project, } = require('../models');
+const {  User, Hours , Project } = require('../models');
 
 // get all posts for homepage
-router.get('/', (req, res) => {
+router.get('/',User, (req, res) => {
   console.log('======================');
-  hours.findAll({
+  Hours.findAll({
     attributes: [
       'id',
       'post_url',
@@ -15,8 +15,8 @@ router.get('/', (req, res) => {
     ],
     include: [
       {
-        model: project,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        model: Project,
+        attributes: ['id', 'hours', 'projects', 'user_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']
@@ -43,8 +43,8 @@ router.get('/', (req, res) => {
 });
 
 // get single post
-router.get('/post/:id', (req, res) => {
-  hours.findOne({
+router.get('hours', Hours, (req, res) => {
+  Hours.findOne({
     where: {
       id: req.params.id
     },
@@ -57,8 +57,8 @@ router.get('/post/:id', (req, res) => {
     ],
     include: [
       {
-        model: project,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        model: Project,
+        attributes: ['id', 'hours', 'projects', 'user_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']
@@ -88,7 +88,6 @@ router.get('/post/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -97,5 +96,6 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
 
 module.exports = router;
