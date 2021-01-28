@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { Project } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // //get all projects
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
   Project.findAll({
   
   })
@@ -14,7 +15,7 @@ router.get('/', (req, res) => {
 });
 
 // GET /api/projects/1
-router.get('/:id', (req, res) => {
+router.get('/:id', withAuth, (req, res) => {
   Project.findOne({
     where: {
       id: req.params.id
@@ -37,7 +38,7 @@ router.get('/:id', (req, res) => {
 
 // POST /api/projects
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
      //check the session
     if (req.session) {
       Project.create({
@@ -56,7 +57,7 @@ router.post('/', (req, res) => {
   });
 
   // //update name, start and end date
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   Project.update(
     {
       title: req.body.title
@@ -81,7 +82,7 @@ router.put('/:id', (req, res) => {
 });
 
   // DELETE /api/projects/1
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   Project.destroy({
     where: {
       id: req.params.id
