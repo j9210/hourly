@@ -28,9 +28,5 @@
     "mysql2": "^2.2.5",
     "sequelize": "^6.4.0"
   },
-<<<<<<< HEAD
-  "keywords": [],
-=======
->>>>>>> 00ce84aca07946267f7872217fec260848cb3227
   "devDependencies": {}
 }

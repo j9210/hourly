@@ -2,7 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const {  User, Hours , Project } = require('../models');
 
-router.get('/',User, (req, res) => {
+router.get('/', (req, res) => {
   console.log('======================');
   Hours.findAll({
     attributes: [

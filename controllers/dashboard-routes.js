@@ -2,9 +2,10 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Hours, User, Project,  } = require('../models');
+const withAuth = require("../utils/auth");
 
 // get all posts for dashboard
-router.get('/', function (req, res) {
+router.get('/',withAuth, function (req, res) {
     console.log(req.session);
     console.log('======================');
     Hours.findAll({
@@ -40,7 +41,7 @@ router.get('/', function (req, res) {
       });
   });
 
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id', withAuth, (req, res) => {
   Hours.findByPk(req.params.id, {
     attributes: [
       'user_id' ,     [sequelize.literal('(SELECT COUNT(*) FROM hours WHERE hours = hours)'), ]
