@@ -3,15 +3,21 @@ const { User } = require('../../models');
 
 router.get('/', (req, res) => {
     User.findAll({
-
-    })
+      attributes: {
+        username: req.body.username,
+        exclude: ['password']
+      },
+    }).then(dbUserData => res.json(dbUserData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+  })
 });
-
-
-
+  // CREATE USER
 router.post('/', (req, res) => {
     User.create({
         username: req.body.username,
+        email: req.body.email,
         hours_id: req.body.hours_id,
         password: req.body.password
       })
@@ -31,6 +37,8 @@ router.post('/', (req, res) => {
         });
     });
 
+    
+
     //login
     router.post('/login', (req, res) => {
         // expects {email: 'lernantino@gmail.com', password: 'password1234'}
@@ -45,7 +53,7 @@ router.post('/', (req, res) => {
           }
       
           const validPassword = dbUserData.checkPassword(req.body.password);
-      
+          
           if (!validPassword) {
             res.status(400).json({ message: 'Incorrect password!' });
             return;

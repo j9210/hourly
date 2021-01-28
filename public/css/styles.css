@@ -12,8 +12,11 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: .25fr 1fr .25fr;
-    background-image: linear-gradient(45deg, #71CBD1, #3A99A6);
-
+    /* linear-gradient(45deg, #71CBD1, #3A99A6); */
+    background-image: url('../images/vecteezy_blue-background_fj1120-2.jpg');
+    background-size: cover;
+    background-position: 80%;
+    background-attachment: fixed;
 }
     /* Nav Bar */
 nav {
@@ -88,6 +91,9 @@ main {
 .intro-info p {
     font-family: 'Cabin', sans-serif;
     line-height: 23px;
+    background-color: rgba(255, 255, 255, 0.63);
+    border-radius: 10px;
+    padding: 12px;
 }
 
     /* Sign Up Form */
@@ -136,7 +142,7 @@ main {
 }
 #sign-up {
     position: relative;
-    left: 90px;
+    left: 10px;
     top: 20px;
     padding: 8px 20px;
     border: 2px solid rgba(255, 255, 255, 0);
@@ -148,14 +154,22 @@ main {
 
     /* SIGN IN */
 .sign-in-form-handler {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signin-form-content {
+    padding: 25px;
     background: rgba( 255, 255, 255, 0.20 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 20.0px );
     -webkit-backdrop-filter: blur( 20.0px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
+    text-align: center;
 }
-.sign-in-form-handler h3 {
+.sign-in-form-handler h2 {
     margin-bottom: 15px;
     padding: 15px 0 5px 0;
 }
@@ -166,15 +180,20 @@ main {
 }
 .sign-in-form input {
     padding: 8px;
-    margin: 10px;
+    margin: 10px 10px 0 10px;
     min-width: 250px;
+    border: 1px solid rgba(255, 255, 255, 0.452);
+    border-radius: 5px;
 }
 #log-in {
     position: relative;
-    top: 15px;
+    top: 45px;
     padding: 8px 20px;
     border: 2px solid rgba(255, 255, 255, 0);
     border-radius: 15px;
+}
+#log-in:hover {
+    background-color: #70e000; 
 }
 
     /* CREATE A PROJECT LINK */
@@ -291,6 +310,8 @@ main {
 
     /* Footer */
 footer {
+    position: relative;
+    top: 50px;
     grid-row: 3 / 4;
     grid-column: 1 / 4;
     display: flex;

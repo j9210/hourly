@@ -6,6 +6,7 @@ async function signupFormHandler(event) {
     const email = document.querySelector('#email-signUp').value.trim();
     const password = document.querySelector('#password-signUp').value.trim();
   
+
     if (username && email && password) {
       const response = await fetch('/api/users', {
         method: 'post',
@@ -16,7 +17,6 @@ async function signupFormHandler(event) {
         }),
         headers: { 'Content-Type': 'application/json' }
       });
-      
       if(response.ok) {
           console.log('success');
           alert("You've been signed up");
@@ -25,4 +25,4 @@ async function signupFormHandler(event) {
       }
     }
 };
-document.querySelector('#sign-up').addEventListener('submit', signupFormHandler);
+document.querySelector('#sign-up').addEventListener('click', signupFormHandler);
