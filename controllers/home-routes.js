@@ -5,13 +5,13 @@ const {  User, Hours , Project } = require('../models');
 router.get('/', (req, res) => {
   console.log('======================');
   Hours.findAll({
-    where: { user_id : }
+    where: { user_id : 1}
 
     ,
     include: [
       {
         model: User,
-        attributes: ['user_id', 'username','date_started', 'date_ended'],
+        attributes: ['id', 'username'],
 
       },
     ]
