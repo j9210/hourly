@@ -11,11 +11,12 @@ Hours.init(
             primaryKey: true,
             autoIncrement: true
         },
+
         user_id: {
-            type:DataTypes.STRING,
+            type:DataTypes.INTEGER,
             allowNull: false,
             reference: {
-                model: 'user',
+                model: "user",
                 key: 'id'
             }
         },

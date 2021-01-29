@@ -13,11 +13,11 @@ Project.belongsTo(User, {
 // Project.hasMany(Hours, {
 //     foreignKey: 'project_id'
 // })
-// User.hasMany(Hours, {
-//     foreignKey: 'user_id'
-// })
-// Hours.belongsTo(User, {
-//          foreignKey: 'user_id'
-//      })
+User.hasMany(Hours, {
+    foreignKey: 'user_id'
+})
+Hours.belongsTo(User, {
+         foreignKey: 'user_id'
+     })
 
 module.exports = { User, Hours, Project };

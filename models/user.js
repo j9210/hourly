@@ -19,14 +19,14 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    hours_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: "hours",
-        key: "id",
-      },
-    },
+    // hours_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true,
+    //   references: {
+    //     model: "hours",
+    //     key: "id",
+    //   },
+    // },
     username: {
       type: DataTypes.STRING,
       allowNull: false,

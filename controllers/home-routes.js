@@ -5,23 +5,15 @@ const {  User, Hours , Project } = require('../models');
 router.get('/', (req, res) => {
   console.log('======================');
   Hours.findAll({
-    attributes: [
-      'user_id',
-      [sequelize.literal('(SELECT COUNT(*) FROM hours WHERE hours.id = hours_id)'), 'hours_count']
-    ],
+    where: { user_id : }
+
+    ,
     include: [
       {
-        model: Project,
-        attributes: ['user_id', 'date_started', 'date_ended'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
         model: User,
-        attributes: ['username']
-      }
+        attributes: ['user_id', 'username','date_started', 'date_ended'],
+
+      },
     ]
   })
     .then(dbhours => {
@@ -39,10 +31,10 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
+  //  {
+  //   // res.redirect('/');
+  //   // return;
+  // }
 
   res.render('login');
 });
