@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const { Hours } = require('../../models');
 const sequelize = require('../../config/connection');
+const withAuth = require('../../utils/auth');
 
 //get hours/
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
   Hours.findAll({
   
   })
@@ -15,7 +16,7 @@ router.get('/', (req, res) => {
 });
 
 //get hours by /id
-router.get('/:id', (req, res) => {
+router.get('/:id', withAuth, (req, res) => {
   Hours.findOne({
     where: {
       id: req.params.id
@@ -35,7 +36,7 @@ router.get('/:id', (req, res) => {
 });
 
 //create
-router.post('/', (req, res) => {
+router.post('/',withAuth, (req, res) => {
     // check the session
     if (req.session) {
       Hours.create({
@@ -54,7 +55,7 @@ router.post('/', (req, res) => {
   });
 
 //update
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   Hours.update(
     {
       billable_hours: req.body.billable_hours
@@ -80,7 +81,7 @@ router.put('/:id', (req, res) => {
 
 
 //delete
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   Hours.destroy({
     where: {
       id: req.params.id
@@ -101,7 +102,7 @@ router.delete('/:id', (req, res) => {
 
 
   //totalhours
-  router.get('/totalhours', (req, res) => {
+  router.get('/totalhours', withAuth, (req, res) => {
     //check the session
     if (req.session) {
       Hours.findAll({

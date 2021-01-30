@@ -30,6 +30,15 @@ Project.init(
                 }
             }
         },
+            user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'user',
+        key: "id",
+      }
+      },
+    
         date_ended: {
             type: DataTypes.DATEONLY,
             allowNull: false,
@@ -39,6 +48,8 @@ Project.init(
                 }
             }
         }
+            
+        
     },
     {
         sequelize,
