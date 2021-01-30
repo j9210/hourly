@@ -4,8 +4,8 @@ const {  User, Hours , Project } = require('../models');
 
 router.get('/', (req, res) => {
   console.log('======================');
-  Hours.findAll({
-    where: { user_id : 1}
+  Project.findAll({
+    where: { user_id : req.session.user_id}
 
     ,
     include: [
@@ -16,11 +16,11 @@ router.get('/', (req, res) => {
       },
     ]
   })
-    .then(dbhours => {
-      const hours = dbhours.map(hours => hours.get({ plain: true }));
+    .then(dbprojects => {
+      const projects = dbprojects.map(projects => projects.get({ plain: true }));
 
       res.render('homepage', {
-        hours,
+        projects,
         loggedIn: req.session.loggedIn
       });
     })
