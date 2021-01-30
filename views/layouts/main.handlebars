@@ -14,20 +14,22 @@
     <link rel="stylesheet" href="/css/styles.css"></link>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            {{#if loggedIn}}
+    <div class="content-container">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                    {{#if loggedIn}}
                 <li><a href="/dashboard">Dashboard</a></li>
                 <li id="logout"><a>Log Out</a></li>
-            {{else}}
+                    {{else}}
                 <li><a href="/login">Log In</a></li>
-            {{/if}}
-        </ul>
-    </nav>
-    <main>
-        {{{ body }}}
-    </main>
+                    {{/if}}
+            </ul>
+        </nav>
+        <main>
+            {{{ body }}}
+        </main>
+    </div>
     <footer>
         <h3>Hourly</h3>
         <ul>
