@@ -8,31 +8,33 @@ const withAuth = require("../utils/auth");
 router.get('/',withAuth, function (req, res) {
     console.log(req.session);
     console.log('======================');
-    Hours.findAll({
+    Project.findAll({
       where: {
         user_id: req.session.user_id
       },
-      attributes: [
-        'user_id',
-              [sequelize.literal('(SELECT COUNT(*) FROM hours WHERE post.id = hours_id)'), 'hours_count']
-      ],
+      // attributes: [
+      //   'user_id',
+      //         //[sequelize.literal('(SELECT COUNT(*) FROM hours WHERE post.id = hours_id)'), 'hours_count']
+      // ],
       include: [
         {
-          model: Project,
-          attributes: [ 'user_id', ],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
-        {
           model: User,
-          attributes: ['username']
+          attributes: [ 'user_id', 'username' ],
+          // include: {
+          //   model: User,
+          //   attributes: ['username']
+          // }
+      
+        // {
+        //   model: User,
+        //   attributes: ['username']
+        // }
         }
-      ]
+      ],
     })
       .then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }));
+        console.log(dbPostData);
         res.render('dashboard', { posts, loggedIn: true });
       })
       .catch(err => {
