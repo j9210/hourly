@@ -48,5 +48,4 @@ const withAuth = require("../utils/auth");
 router.get('/', (req, res) => {
   res.render('dashboard', { loggedIn: true });
 });
-
 module.exports = router;
