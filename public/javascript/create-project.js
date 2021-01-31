@@ -24,5 +24,5 @@ async function createPostHandler(event) {
         }
     }
 };
-
+// use day.js get method(.get) to get the  current date
 document.querySelector('#create-project-btn').addEventListener('submit', createPostHandler);
