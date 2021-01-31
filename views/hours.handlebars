@@ -1,17 +1,18 @@
-<h2 class="header-title">Project Hours</h2>
+<h2 class="header-title">{{project.title}} Hours</h2>
 <div class="container-fluid"> 
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Day</th>
+      <th scope="col">Date</th>
       <th scope="col">Start Time</th>
       <th scope="col">End Time</th>
-      <th scope="col">Add or Delete</th>
+      <th scope="col">Billable/Unbillable</th>
+      <th scope="col">Edit</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Monday</th>
+      <th scope="row">{{project.date_started}}</th>
       <td>
         <input type="time" id="start-time" name="start-time">
       </td>
@@ -19,82 +20,11 @@
         <input type="time" id="end-time" name="end-time">
       </td>
       <td>
-        <button id="add-hours">ADD</button>
-        <button id="delete-hours">DELETE</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Tuesday</th>
-      <td>
-        <input type="time" id="start-time" name="start-time">
-      </td>
-      <td>
-        <input type="time" id="end-time" name="end-time">
-      </td>
-      <td>
-        <button id="add-hours">ADD</button>
-        <button id="delete-hours">DELETE</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Wednesday</th>
-      <td>
-        <input type="time" id="start-time" name="start-time">
-      </td>
-      <td>
-        <input type="time" id="end-time" name="end-time">
-      </td>
-      <td>
-        <button id="add-hours">ADD</button>
-        <button id="delete-hours">DELETE</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Thursday</th>
-      <td>
-        <input type="time" id="start-time" name="start-time">
-      </td>
-      <td>
-        <input type="time" id="end-time" name="end-time">
-      </td>
-      <td>
-        <button id="add-hours">ADD</button>
-        <button id="delete-hours">DELETE</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Friday</th>
-      <td>
-        <input type="time" id="start-time" name="start-time">
-      </td>
-      <td>
-        <input type="time" id="end-time" name="end-time">
-      </td>
-      <td>
-        <button id="add-hours">ADD</button>
-        <button id="delete-hours">DELETE</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Saturday</th>
-      <td>
-        <input type="time" id="start-time" name="start-time">
-      </td>
-      <td>
-        <input type="time" id="end-time" name="end-time">
-      </td>
-      <td>
-        <button id="add-hours">ADD</button>
-        <button id="delete-hours">DELETE</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Sunday</th>
-      <td>
-        <input type="time" id="start-time" name="start-time">
-      </td>
-      <td>
-        <input type="time" id="end-time" name="end-time">
+        <input type="text" id="hour-type" name="hour-type" list="hour-choice">
+          <datalist id="hour-choice">
+            <option value="billable"></option>
+            <option value="unbillable"></option>
+          </datalist>
       </td>
       <td>
         <button id="add-hours">ADD</button>
