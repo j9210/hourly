@@ -4,48 +4,30 @@ const sequelize = require('../config/connection');
 const { Hours, User, Project,  } = require('../models');
 const withAuth = require("../utils/auth");
 
-// get all posts for dashboard
-
-// router.get('/edit/:id', withAuth, (req, res) => {
-//   Hours.findByPk(req.params.id, {
-//     attributes: [
-//       'user_id' ,     [sequelize.literal('(SELECT COUNT(*) FROM hours WHERE hours = hours)'), ]
-//     ],
-//     include: [
-//       {
-//         model: Project,
-//         attributes: [ 'user_id', ],
-//         include: {
-//           model: User,
-//           attributes: ['username']
-//         }
-//       },
-//       {
-//         model: User,
-//         attributes: ['username']
-//       }
-//     ]
-//   })
-//     .then(dbdata=> {
-//       if (dbdata) {
-//         const dbdata = dbdata.get({ plain: true });
-        
-        
-      
-//       } else {
-//         res.status(404).end();
-//       }
-//     })
-//     .catch(err => {
-//       res.status(500).json(err);
-//     });
-// });
-
-
-// router.get('/', withAuth, (req, res) => {
-//   res.render('dashboard');
-// });
 router.get('/', (req, res) => {
   res.render('dashboard', { loggedIn: true });
 });
+
+router.get('/create-project', withAuth, (req, res) => {
+  project.findAll({
+  
+  where: {
+    // use the ID from the session
+    user_id: req.session.user_id
+  },
+  attibutes: [
+  [sequelize.literal('(SELECT COUNT(*) FROM project WHERE user_id = user_id)'), 'project']
+  ]  
+}
+  )  
+  .then(dbPostData => {
+    // serialize data before passing to template
+    const projects = dbPostData.map(project => project.get({ plain: true }));
+    res.render('create-project', { project, loggedIn: true });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  })
+})
 module.exports = router;
