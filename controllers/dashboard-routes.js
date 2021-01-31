@@ -19,7 +19,7 @@ router.get('/', withAuth, (req, res) => {
   .then(dbPostData => {
     // serialize data before passing to template
     const projects = dbPostData.map(project => project.get({ plain: true }));
-    res.render('dashboard', { project, loggedIn: true });
+    res.render('create-project', { project, loggedIn: true });
   })
   .catch(err => {
     console.log(err);
