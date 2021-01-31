@@ -4,7 +4,11 @@ const sequelize = require('../config/connection');
 const { Hours, User, Project,  } = require('../models');
 const withAuth = require("../utils/auth");
 
-router.get('/', withAuth, (req, res) => {
+router.get('/', (req, res) => {
+  res.render('dashboard', { loggedIn: true });
+});
+
+router.get('/create-project', withAuth, (req, res) => {
   project.findAll({
   
   where: {
