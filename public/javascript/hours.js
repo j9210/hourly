@@ -8,8 +8,9 @@ const hoursBtn = document.querySelector('#add-hours');
 async function addHours(event) {
   event.preventDefault();
 
-const startTime = document.querySelector('#start-time');
-const endTime = document.querySelector('#end-time');
+const startTime = document.querySelector('#start-time').value;
+const endTime = document.querySelector('#end-time').value;
+const billable_hours = document.querySelector('#hour-type')
  
 console.log(startTime);
 console.log(endTime);
@@ -17,8 +18,7 @@ console.log(endTime);
   const response = await fetch('/api/hours', {
     method: 'post',
     body: JSON.stringify({
-      billable_hours,
-      unbillable_hours
+      billable_hours: startTime
     }),
     headers: { 'Content-Type': 'application/json' }
   })
