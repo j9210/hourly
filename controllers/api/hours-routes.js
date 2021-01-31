@@ -6,7 +6,7 @@ const withAuth = require('../../utils/auth');
 //get hours/
 router.get('/', withAuth, (req, res) => {
   Hours.findAll({
-  
+
   })
     .then(dbHoursData => res.json(dbHoursData))
     .catch(err => {

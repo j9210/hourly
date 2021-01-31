@@ -1,25 +1,17 @@
-    <!-- Above Main Tag -->
-<section class="create-project-handler">
-    <h2>Create a Project</h2>
-    <div class="create-project-link">
-        <a href="./partial/create-project.html">
-            <i class='far fa-arrow-alt-circle-right' style='font-size:36px'></i>
-        </a>
-    </div>
-    <div>
+
         {{> create-project}}
-    </div>
-</section>
+
     <!-- Individual Projects -->
-{{#if project.length}}
-{{#each project as |project|}}
+
 <section class="project">
-    <h2>{{project.title}}</h2>
-    <div class="project-dates">
-        <p>Date Started: <span>{{project.date_started}}</span></p>
-        <p>Date Ended: <span>{{project.date_ended}}</span></p>
-    </div>
-    <h5><a href="/hours">Edit Hours</a></h5>
+    {{#if project.length}}
+        {{#each project as |project|}}
+        <h2>{{project.title}}</h2>
+        <div class="project-dates">
+            <p>Date Started: <span>{{project.date_started}}</span></p>
+            <p>Date Ended: <span>{{project.date_ended}}</span></p>
+        </div>
+        <h5><a href="/hours">Edit Hours</a></h5>
+        {{/each}}
+    {{/if}}
 </section>
-{{/each}}
-{{/if}}

@@ -48,7 +48,7 @@ router.post('/', withAuth, (req, res) => {
         //use the id from the session
         user_id: req.session.user_id
       })
-        .then(dbprojectData => res.json(dbprojectData))
+        .then(dbProjectData => res.json(dbProjectData))
         .catch(err => {
           console.log(err);
           res.status(400).json(err);

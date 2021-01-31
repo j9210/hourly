@@ -18,11 +18,12 @@ async function createPostHandler(event) {
 
         if(response.ok) {
             console.log('Post Created!!')
+            document.location.replace('/hours');
             alert('This project has been created')
         } else {
             alert(response.statusText)
         }
     }
 };
-// use day.js get method(.get) to get the  current date
-document.querySelector('#create-project-btn').addEventListener('submit', createPostHandler);
+
+document.querySelector('#create-project-btn').addEventListener('click', createPostHandler);
