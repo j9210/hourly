@@ -1,4 +1,4 @@
-const { User, Hours } = require('../models');
+const { User, Hours, Project } = require('../models');
 
 const users = [
     {
@@ -18,27 +18,45 @@ const users = [
     }
 ]
 
-const hours = [
+const hour = [
     {
-        user_id: '1',
+        project_id: 1,
         billable_hours: '10',
-        unbillable_hours: '5'
+        unbillable_hours: '5',
+        
     },
     {
-        user_id: '1',
+        project_id:1,
+
         billable_hours: '20',
         unbillable_hours: '10'
     },
     {
-        user_id: '1',
+        project_id: 1,
         billable_hours: '25',
         unbillable_hours: '10'
     }
 ]
 
+const projects = [
+    {
+        "title": "bootcamp",
+        "user_id":1,
+        "date_started": "1/21/2020",
+        "date_ended": "1/22/2020"
+    
+    },
+
+]
+
 
 User.bulkCreate(users).then(result=>{
     console.log("Users added", result)
-    Hours.bulkCreate(hours).then(result=>
-        console.log('Hours added to user'))
-})
+    Project.bulkCreate(projects).then(result=>{
+        console.log("Project added", result)
+        Hours.bulkCreate(hour).then(result=>{
+            console.log("Hours added", result)
+        });
+    });
+});
+
