@@ -4,6 +4,11 @@ async function createPostHandler(event) {
     const title = document.querySelector('#create-title').value.trim();
     const startDate = document.querySelector('#start-date').value.trim();
     const endDate = document.querySelector('#end-date').value.trim();
+    const projectDates = document.querySelector('.project-date')
+
+    projectDates.forEach( dates => {
+        const date = datejs(dates.dataset.date)
+    })
 
     if (title && startDate && endDate) {
         const response = await fetch ('/api/projects', {
@@ -26,4 +31,4 @@ async function createPostHandler(event) {
     }
 };
 
-document.querySelector('#create-project-btn').addEventListener('click', createPostHandler);
+document.querySelector('#create-project-btn').addEventListener('submit', createPostHandler);

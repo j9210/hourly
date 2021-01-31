@@ -16,27 +16,27 @@ router.get('/', withAuth, (req, res) => {
 });
 
 //get hours by /id
-router.get('/:id', withAuth, (req, res) => {
-  Hours.findOne({
-    where: {
-      id: req.params.id
-    }
-  })
-  .then(dbHoursData => {
-    const hours = dbHoursData.map(hours => hours.get({ plain: true }))
-    if (!dbHoursData) {
-      res.status(404).json({ message: 'No hours found with this id' });
-      return;
-    } else {
-      res.render('hours', {hours, loggedIn: true });
-    }
-    res.json(dbHoursData);
-  })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+// router.get('/:id', withAuth, (req, res) => {
+//   Hours.findOne({
+//     where: {
+//       id: req.params.id
+//     }
+//   })
+//   .then(dbHoursData => {
+//     const hours = dbHoursData.map(hours => hours.get({ plain: true }))
+//     if (!dbHoursData) {
+//       res.status(404).json({ message: 'No hours found with this id' });
+//       return;
+//     } else {
+//       res.render('hours', {hours, loggedIn: true });
+//     }
+//     res.json(dbHoursData);
+//   })
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 //create
 router.post('/',withAuth, (req, res) => {

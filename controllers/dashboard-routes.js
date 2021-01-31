@@ -8,7 +8,14 @@ router.get('/', (req, res) => {
  Project.findAll({
   where: {
     user_id: req.session.user_id
-  }
+  },
+  attributes: [
+    'title',
+    'user_id',
+    'date_started',
+    'date_ended'
+   
+  ]
 })
   .then(dbProjectData => {
     const projects = dbProjectData.map(project => project.get({ plain: true }));
