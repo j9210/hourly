@@ -40,10 +40,10 @@ const hour = [
 
 const projects = [
     {
-        "title": "bootcamp",
-        "user_id":1,
-        "date_started": "1/21/2020",
-        "date_ended": "1/22/2020"
+        title: 'bootcamp',
+        user_id: 1,
+        date_started: '1/21/2020',
+        date_ended: '1/22/2020'
     
     },
 
