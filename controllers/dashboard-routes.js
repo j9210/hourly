@@ -2,32 +2,20 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Hours, User, Project,  } = require('../models');
+const { findAll } = require('../models/user');
 const withAuth = require("../utils/auth");
-
 router.get('/', (req, res) => {
-  res.render('dashboard', { loggedIn: true });
-});
-
-router.get('/create-project', withAuth, (req, res) => {
-  project.findAll({
-  
-  where: {
-    // use the ID from the session
-    user_id: req.session.user_id
-  },
-  attibutes: [
-  [sequelize.literal('(SELECT COUNT(*) FROM project WHERE user_id = user_id)'), 'project']
-  ]  
-}
-  )  
-  .then(dbPostData => {
-    // serialize data before passing to template
-    const projects = dbPostData.map(project => project.get({ plain: true }));
-    res.render('create-project', { project, loggedIn: true });
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  })
+ Project.findAll({
+ where: {
+  user_id: req.session.user_id
+}})
+.then(dbProjectData =>{
+  const projects = dbProjectData.map(project => project.get({ plain: true }));
+    res.render('dashboard', { projects, loggedIn: true });
+})
+.catch(err => {
+  console.log(err);
+  res.status(500).json(err);
+})
 })
 module.exports = router;
