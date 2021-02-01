@@ -2,12 +2,17 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const dotenv = require('dotenv');
+dotenv.config();
 
+// const dayjs = require('dayjs');
 
 const app = express();
-const PORT = process.env.PORT || 3006;
+const PORT = process.env.PORT || 3001;
+
 
 const sequelize = require('./config/connection');
+const { truncate } = require('fs');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
@@ -32,8 +37,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('./controllers/'));
+// dayjs().format();
 
-
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
