@@ -2,11 +2,15 @@ async function createPostHandler(event) {
     event.preventDefault();
 
     const title = document.querySelector('#create-title').value.trim();
-    const startDate = document.querySelector('#start-date').value.trim();
-    const endDate = document.querySelector('#end-date').value.trim();
+    const date_started = document.querySelector('#start-date').value.trim();
+    const date_ended = document.querySelector('#end-date').value.trim();
 
-    if (title && startDate && endDate) {
-        const response = await fetch ('/api/projects', {
+    console.log(title)
+    console.log(date_started)
+    console.log(date_ended)
+
+    if (title && date_started && date_ended) {
+        const response = await fetch ('/api/project', {
             method: 'post',
             body: JSON.stringify({
                 title,
@@ -25,4 +29,4 @@ async function createPostHandler(event) {
     }
 };
 
-document.querySelector('#create-project-btn').addEventListener('submit', createPostHandler);
+document.querySelector('#create-project-btn').addEventListener('click', createPostHandler);
