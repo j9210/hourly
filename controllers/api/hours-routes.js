@@ -44,7 +44,7 @@ router.post('/',withAuth, (req, res) => {
         billable_hours: req.body.billable_hours,
         unbillable_hours: req.body.unbillable_hours,
         //use the id from the session
-        user_id: req.session.user_id
+        project_id: req.body.project_id
       })
         .then(dbhoursData => res.json(dbhoursData))
         .catch(err => {
