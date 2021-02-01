@@ -41,7 +41,7 @@ console.log(billable_hours, unbillable_hours)
     body: JSON.stringify({
       billable_hours: billable_hours,
       unbillable_hours: unbillable_hours
-      project_id: 
+
     }),
     headers: { 'Content-Type': 'application/json' }
   })
