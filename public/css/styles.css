@@ -226,7 +226,6 @@ main {
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 ); 
     max-height: 100px; */
-
 }
 
 /* Project Styles */
@@ -267,9 +266,6 @@ color: black;
 .project-dates {
 display: flex;
 justify-content: flex-end;
-}
-.create-proj-btn-partial {
-    
 }
 
 /* Create Project CSS */
