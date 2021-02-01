@@ -1,9 +1,9 @@
+# Hourly
+
 ![Node.js](https://img.shields.io/badge/language-node.js-yellow?style=plastic)
 ![Database-MYSQL](https://img.shields.io/badge/database-mysql-purple?style=plastic)
 ![ORM-sequilize](https://img.shields.io/badge/ORM-sequlilize-blue?style=plastic)
 ![template-handlebars](https://img.shields.io/badge/template-handlebars-orange?style=plastic)  
-
-# Hourly
 
 ## Purpose
 The purpose of this application is to allow developers to log and track billable and unbillable project hours  all in one place.
