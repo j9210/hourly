@@ -5,6 +5,10 @@ async function createPostHandler(event) {
     const startDate = document.querySelector('#start-date').value.trim();
     const endDate = document.querySelector('#end-date').value.trim();
 
+    console.log(title)
+    console.log(startDate)
+    console.log(endDate)
+
     if (title && startDate && endDate) {
         const response = await fetch ('/api/projects', {
             method: 'post',
