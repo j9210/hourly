@@ -2,78 +2,26 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Hours, User, Project,  } = require('../models');
+const { findAll } = require('../models/user');
 const withAuth = require("../utils/auth");
-
-// get all posts for dashboard
-router.get('/',withAuth, function (req, res) {
-    console.log(req.session);
-    console.log('======================');
-    Hours.findAll({
-      where: {
-        user_id: req.session.user_id
-      },
-      attributes: [
-        'user_id',
-              [sequelize.literal('(SELECT COUNT(*) FROM hours WHERE post.id = hours_id)'), 'hours_count']
-      ],
-      include: [
-        {
-          model: Project,
-          attributes: [ 'user_id', ],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
-        {
-          model: User,
-          attributes: ['username']
-        }
-      ]
-    })
-      .then(dbPostData => {
-        const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('dashboard', { posts, loggedIn: true });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
-
-router.get('/edit/:id', withAuth, (req, res) => {
-  Hours.findByPk(req.params.id, {
-    attributes: [
-      'user_id' ,     [sequelize.literal('(SELECT COUNT(*) FROM hours WHERE hours = hours)'), ]
-    ],
-    include: [
-      {
-        model: Project,
-        attributes: [ 'user_id', ],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
-  })
-    .then(dbdata=> {
-      if (dbdata) {
-        const dbdata = dbdata.get({ plain: true });
-        
-        
-      
-      } else {
-        res.status(404).end();
-      }
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
+router.get('/dashboard', (req, res) => {
+ Project.findAll({
+ where: {
+   //bring this back when more data in database hard coded user 1 project from seeds for now
+  //user_id: req.session.user_id
+  user_id: 1
+}})
+.then(dbProjectData =>{
+  const projects = dbProjectData.map(project => project.get({ plain: true }));
+    res.render('dashboard', { projects, loggedIn: true });
+})
+.catch(err => {
+  console.log(err);
+  res.status(500).json(err);
+})
+})
+router.get('/hours', (req, res)=>{
+  res.render('hours')
 });
 
 module.exports = router;

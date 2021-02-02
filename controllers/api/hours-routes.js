@@ -43,8 +43,8 @@ router.post('/',withAuth, (req, res) => {
         //user_id: req.body.user_id,
         billable_hours: req.body.billable_hours,
         unbillable_hours: req.body.unbillable_hours,
-        //use the id from the session
-        user_id: req.session.user_id
+        //use the project_id from the session
+        project_id: req.session.project_id
       })
         .then(dbhoursData => res.json(dbhoursData))
         .catch(err => {
@@ -109,7 +109,7 @@ router.delete('/:id', withAuth, (req, res) => {
         attributes: [[sequelize.literal("SUM(billable_hours + unbillable_hours)"), "result"]],
         where: { 
 
-          user_id: req.session.user_id
+          project_id: req.session.project_id
         }
       })
        .then(dbhoursData => res.json(dbhoursData))

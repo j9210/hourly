@@ -4,9 +4,9 @@ const bcrypt = require("bcrypt");
 
 class User extends Model {
   //sets up method to run on instance data (per user) to check password
-    // WORKING
+  // WORKING
   checkPassword(loginPW) {
-    return bcrypt.compareSync(loginPW, this.password)
+    return bcrypt.compareSync(loginPW, this.password);
   }
 }
 
@@ -18,14 +18,6 @@ User.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-    },
-    hours_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: "hours",
-        key: "id",
-      },
     },
     username: {
       type: DataTypes.STRING,
@@ -50,16 +42,19 @@ User.init(
   },
   {
     hooks: {
-        // set up beforeCreate lifecycle "hook" functionality
-        async beforeCreate(newUserData) {
-            newUserData.password = await bcrypt.hash(newUserData.password, 10);
-            return newUserData;
-        },
-        // set up beforeUpdate lifecycle "hook" functionality
-        async beforeUpdate(updatedUserData) {
-            updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-            return updatedUserData;
-        }
+      // set up beforeCreate lifecycle "hook" functionality
+      async beforeCreate(newUserData) {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
+      },
+      // set up beforeUpdate lifecycle "hook" functionality
+      async beforeUpdate(updatedUserData) {
+        updatedUserData.password = await bcrypt.hash(
+          updatedUserData.password,
+          10
+        );
+        return updatedUserData;
+      },
     },
     sequelize,
     timestamps: false,
@@ -68,5 +63,6 @@ User.init(
     modelName: "user",
   }
 );
+
 
 module.exports = User;
