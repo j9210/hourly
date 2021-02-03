@@ -1,25 +1,13 @@
 const router = require('express').Router();
-const { Hours } = require('../../models');
+const { Hours, Project } = require('../../models');
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
-//get hours/
-router.get('/', withAuth, (req, res) => {
-  Hours.findAll({
-  
-  })
-    .then(dbHoursData => res.json(dbHoursData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-//get hours by /id
+//get hours by project id
 router.get('/:id', withAuth, (req, res) => {
-  Hours.findOne({
+  Hours.findAll({
     where: {
-      id: req.params.id
+      project_id: req.session.project_id
     }
   })
     .then(dbHoursData => {
@@ -36,15 +24,16 @@ router.get('/:id', withAuth, (req, res) => {
 });
 
 //create
-router.post('/',withAuth, (req, res) => {
+router.post('/:id',withAuth, (req, res) => {
     // check the session
     if (req.session) {
       Hours.create({
+        project_id: req.session.project_id,
         //user_id: req.body.user_id,
         billable_hours: req.body.billable_hours,
-        unbillable_hours: req.body.unbillable_hours,
+        unbillable_hours: req.body.unbillable_hours
         //use the project_id from the session
-        project_id: req.session.project_id
+        
       })
         .then(dbhoursData => res.json(dbhoursData))
         .catch(err => {
@@ -54,30 +43,30 @@ router.post('/',withAuth, (req, res) => {
     }
   });
 
-//update
-router.put('/:id', withAuth, (req, res) => {
-  Hours.update(
-    {
-      billable_hours: req.body.billable_hours
-    },
-    {
-      where: {
-        id: req.params.id 
-      }
-    }
-  )
-  .then(dbHoursData => {
-    if(!dbHoursData) {
-      res.status(404).json({ message: 'No hours found with this id'});
-      return;
-    }
-    res.json(dbHoursData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
-});
+// //update
+// router.put('/:id', withAuth, (req, res) => {
+//   Hours.update(
+//     {
+//       billable_hours: req.body.billable_hours
+//     },
+//     {
+//       where: {
+//         id: req.params.id 
+//       }
+//     }
+//   )
+//   .then(dbHoursData => {
+//     if(!dbHoursData) {
+//       res.status(404).json({ message: 'No hours found with this id'});
+//       return;
+//     }
+//     res.json(dbHoursData);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//     res.status(500).json(err);
+//   });
+// });
 
 
 //delete

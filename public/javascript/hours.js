@@ -36,12 +36,11 @@ if (hourType == 'unbillable') {
   let billable_hours = 0;
 } 
 console.log(billable_hours, unbillable_hours)
-  const response = await fetch('/api/hours', {
+  const response = await fetch('/api/hours/:id', {
     method: 'post',
     body: JSON.stringify({
-      billable_hours: billable_hours,
-      unbillable_hours: unbillable_hours
-
+      billable_hours,
+      unbillable_hours,
     }),
     headers: { 'Content-Type': 'application/json' }
   })

@@ -1,6 +1,6 @@
 
-<h2 class="header-title">{{project.title}} Hours</h2>
-<div class="container-fluid" id="{{project.id}}"> 
+<h2 class="header-title">{{project.title}}</h2>
+<div class="container-fluid" id="{{hours.project_id}}"> 
 <table class="table">
   <thead>
     <tr>
@@ -13,9 +13,9 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">{{project.date_started}}</th>
+      <th scope="row">{{hours.project_id}}</th>
       <td>
-        <input type="time" id="start-time" name="start-time" onchange="addHours(this.value)">
+        <input type="time" id="start-time" name="start-time">
       </td>
       <td>
         <input type="time" id="end-time" name="end-time">
@@ -35,4 +35,5 @@
   </tbody>
 </table>
 </div>  
+
  <script src="/javascript/hours.js"></script>

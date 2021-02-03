@@ -8,7 +8,7 @@ h1, h2, h3, h4, h5, h5 {
 }
 
 
-body {
+.content-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: .25fr 1fr .25fr;
@@ -17,6 +17,7 @@ body {
     background-size: cover;
     background-position: 80%;
     background-attachment: fixed;
+    height: 85vh;
 }
     /* Nav Bar */
 nav {
@@ -25,6 +26,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20px;
 }
 body h1 {
     padding: 25px 50px;
@@ -64,20 +66,20 @@ main {
     /* Background gradient color */
 .home-color-bg {
     height: 100%;
-}
-    /* Home-Page elements */
-.home-info-handler {
-    grid-row: 2 / 3;
-    grid-column: 1 / 3;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-flow: row wrap;
 }
+
     /* HOMEPAGE Brand Statement */
 .intro-info {
-    position: relative;
-    top: 50px;
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
+    width: fit-content;
+    height: fit-content;
     padding: 25px;
+    margin: 10px 5px;
     background: rgba( 255, 255, 255, 0.20 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 20.0px );
@@ -93,7 +95,7 @@ main {
     line-height: 23px;
     background-color: rgba(255, 255, 255, 0.63);
     border-radius: 10px;
-    padding: 12px;
+    padding: 20px;
 }
 
     /* Sign Up Form */
@@ -111,8 +113,9 @@ main {
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .sign-up-form {
-    position: relative;
-    top: 50px;
+    width: fit-content;
+    height: fit-content;
+    margin: 10px 5px;
         /* Glass Background */
     background: rgba( 255, 255, 255, 0.20 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -140,9 +143,13 @@ main {
     border-color: #63d5e4;
     box-shadow: 5px 5px 10px #63d5e4;
 }
+.signup-btn-handler {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 #sign-up {
     position: relative;
-    left: 10px;
     top: 20px;
     padding: 8px 20px;
     border: 2px solid rgba(255, 255, 255, 0);
@@ -185,6 +192,11 @@ main {
     border: 1px solid rgba(255, 255, 255, 0.452);
     border-radius: 5px;
 }
+.sign-in-form input:focus {
+    outline: none;
+    border-color: #63d5e4;
+    box-shadow: 5px 5px 10px #63d5e4;
+}
 #log-in {
     position: relative;
     top: 45px;
@@ -197,8 +209,8 @@ main {
 }
 
     /* CREATE A PROJECT LINK */
-.create-project-handler {
-    grid-column: 1 / 2;
+/* .create-project-handler { */
+    /* grid-column: 2 / 3;
     grid-row: 2 / 3;
     display: flex;
     flex-flow: column;
@@ -212,23 +224,17 @@ main {
     backdrop-filter: blur( 20.0px );
     -webkit-backdrop-filter: blur( 20.0px );
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    max-height: 100px;
-}
-.create-project-link {
-    text-align: center;
-}
-.create-project-link {
-    position: relative;
-    top: 10px;
-}
+    border: 1px solid rgba( 255, 255, 255, 0.18 ); 
+    max-height: 100px; */
+/* } */
 
-    /* Project Styles */
+/* Project Styles */
 .project {
     border: 1px solid black;
     border-radius: 8px;
+    width: max-content;
     padding: 10px;
-    margin: 25px 10px;
+    margin: 25px 10px; 
     background: rgba(255, 255, 255, 0.6);
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 134, 0.2 );
     backdrop-filter: blur( 20.0px );
@@ -237,77 +243,109 @@ main {
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .project h2 {
-    letter-spacing: 1px;
+letter-spacing: 1px;
 }
 .project h5 {
-    padding: 5px;
-    background-color: black;
-    border: 1px solid black;
-    border-radius: 5px;
-    width: fit-content;
+padding: 2px 5px; 
+background-color: black;
+border: 1px solid black;
+border-radius: 5px;
+width: fit-content;
 }
 .project h5:hover {
-    background-color: white;
-    border: 1px solid white;
+background-color: white;
+border: 1px solid white;
 }
 .project h5 a {
-    text-decoration: none;
-    color: white;
-    width: 100%;
-    height: 100%;
+text-decoration: none;
+color: white;
 }
 .project h5 a:hover {
-    color: black;
+color: black;
 }
 .project-dates {
-    display: flex;
-    justify-content: flex-end;
-}
-.project-dates p {
-    margin: 5px;
+display: flex;
+justify-content: flex-end;
 }
 
-
-    /* Create Project CSS */
+/* Create Project CSS */
 .create-post-handler {
-    background-color: white;
-    border-radius: 12px;
-    text-align: center;
-    width: max-content;
-    padding: 15px;
+background-color: white;
+border-radius: 12px;
+text-align: center;
+width: max-content;
+padding: 15px;
 }
 .create-post-handler h1 {
-    margin-bottom: 5px;
+margin-bottom: 5px;
 }
 .date-handler {
-    display: flex;
-    align-items: center;
-    padding: 10px;
+display: flex;
+align-items: center;
+padding: 10px;
 }
 .date-handler label {
-    margin-right: 10px;
-    font-family: 'cabin';
+margin-right: 10px;
+font-family: 'cabin';
 }
 .date-handler input {
-    margin-right: 10px;
-    font-family: 'cabin';
-    border: 1px solid rgb(177, 177, 177)
+margin-right: 10px;
+font-family: 'cabin';
+border: 1px solid rgb(177, 177, 177)
 }
 .date-handler input:focus {
-    outline: none;
-    border-color: #acacac;
-    box-shadow: 5px 5px 10px #c2c2c2;
+outline: none;
+border-color: #acacac;
+box-shadow: 5px 5px 10px #c2c2c2;
 }
 .create-post-btn-handler {
-    margin: 15px 0 5px 0;
+margin: 15px 0 5px 0;
 }
 #create-project-btn {
-    padding: 8px 15px;
-    border: 1px solid rgba(255, 255, 255, 0);
-    border-radius: 5px;
-    background-color: #83e377;
+padding: 8px 15px;
+border: 1px solid rgba(255, 255, 255, 0);
+border-radius: 5px;
+background-color: #83e377;
 }
 
+/*Hours Style*/
+.header-title {
+margin: 10px;
+margin-top: 15px;
+background: rgba( 255, 255, 255, 0.25 );
+padding: 8px 15px;
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 20.0px );
+-webkit-backdrop-filter: blur( 20.0px );
+border-radius: 10px;
+}
+
+.hour-table {
+width: 100%;
+}
+
+.table button { 
+grid-row: 1/2;
+grid-column: 3 / 4;
+display: flex;
+justify-content: space-around;
+background: none;
+border: none;
+font-family: 'Cabin', sans-serif;
+padding: 8px 15px;
+background: rgba( 255, 255, 255, 0.20 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 20.0px );
+-webkit-backdrop-filter: blur( 20.0px );
+border-radius: 10px;
+}
+
+.table button:hover {
+backdrop-filter: blur( 10.0px );
+-webkit-backdrop-filter: blur( 10.0px );
+background-color: orange;
+}
+  
     /* Footer */
 footer {
     position: relative;
