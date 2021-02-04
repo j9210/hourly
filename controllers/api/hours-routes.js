@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Hours, Project } = require('../../models');
+const { Hours } = require('../../models');
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
@@ -7,7 +7,7 @@ const withAuth = require('../../utils/auth');
 router.get('/:id', withAuth, (req, res) => {
   Hours.findAll({
     where: {
-      project_id: req.session.project_id
+      project_id: req.body.project_id
     }
   })
     .then(dbHoursData => {
@@ -28,14 +28,15 @@ router.post('/:id',withAuth, (req, res) => {
     // check the session
     if (req.session) {
       Hours.create({
-        project_id: req.session.project_id,
+        project_id: req.body.project_id,
         //user_id: req.body.user_id,
         billable_hours: req.body.billable_hours,
         unbillable_hours: req.body.unbillable_hours
-        //use the project_id from the session
+        //use the project_id from the session     
         
       })
         .then(dbhoursData => res.json(dbhoursData))
+
         .catch(err => {
           console.log(err);
           res.status(400).json(err);
@@ -72,9 +73,8 @@ router.post('/:id',withAuth, (req, res) => {
 //delete
 router.delete('/:id', withAuth, (req, res) => {
   Hours.destroy({
-    where: {
-      id: req.params.id
-    }
+
+    
   })
     .then(dbHoursData => {
       if (!dbHoursData) {

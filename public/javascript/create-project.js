@@ -17,8 +17,7 @@ async function createPostHandler(event) {
         });
 
         if(response.ok) {
-            console.log('Post Created!!')
-            
+            console.log('Post Created!!') 
             alert('This project has been created')
             document.location.reload();
         } else {

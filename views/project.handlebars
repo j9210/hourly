@@ -1,6 +1,6 @@
 
 <h2 class="header-title">{{project.title}}</h2>
-<div class="container-fluid" id="{{project.id}}"> 
+<div class="container-fluid" id="{{hours.project_id}}"> 
 <table class="table">
   <thead>
     <tr>
@@ -8,12 +8,12 @@
       <th scope="col">Start Time</th>
       <th scope="col">End Time</th>
       <th scope="col">Billable/Unbillable</th>
-      <th scope="col"></th>
+      <th scope="col">Edit</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">{{project.date_started}}</th>
+      <th scope="row">{{hours.project_id}}</th>
       <td>
         <input type="time" id="start-time" name="start-time">
       </td>
@@ -29,28 +29,11 @@
       </td>
       <td>
         <button id="add-hours">ADD</button>
+        <button id="delete-hours">DELETE</button>
       </td>
     </tr>
   </tbody>
 </table>
 </div>  
 
-<div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        View All Hours
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        {{#if hours.length}}
-         {{#each hours}}
-      {{> show-hours}}
-       {{/each}} 
-       {{/if}}
-      </div>
-    </div>
-  </div>
-</div>
  <script src="/javascript/hours.js"></script>

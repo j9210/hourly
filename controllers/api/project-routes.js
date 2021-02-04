@@ -47,13 +47,16 @@ router.post('/', withAuth, (req, res) => {
         date_ended: req.body.date_ended,
         //use the id from the session
         user_id: req.session.user_id,
-        project_id: req.body.project_id
+      
+        
       })
+      
         .then(dbprojectData => res.json(dbprojectData))
         .catch(err => {
           console.log(err);
           res.status(400).json(err);
         });
+        
     }
   });
 

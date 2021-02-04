@@ -1,0 +1,32 @@
+
+ <div class="container-fluid" id="{{project.id}}"> 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Billable</th>
+      <th scope="col">Unbillable</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{project.date_started}}</th>
+  
+
+      <td>
+       <h2>{{hour.billable_hours}}</h2> 
+      </td>
+      <td>
+        {{hour.unbillable_hours}}
+      </td>
+ 
+
+      <td>
+        <button id="delete-hours">DELETE</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div> 
+
